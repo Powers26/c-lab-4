@@ -1,4 +1,4 @@
-//Lium Powers, Computer Science, 10/__/2026
+//Lium Powers, Computer Science, 10/27/2026
 
 //Imports the libraries
 #include <iostream>
@@ -9,8 +9,10 @@
 //function declarations
 void findTempRange(int temp);
 
+//main function begins
 int main()
 {
+    //opens the file
     std::ifstream infile;
     infile.open("HourlyTemps.dat");
 
@@ -21,6 +23,7 @@ int main()
         return 1;
     }
 
+    //variable declarations
     int temp;
     infile >> temp; //prime read
 
@@ -43,15 +46,16 @@ int main()
             findTempRange(temp);
         }
         
+        //gets the next temperature from file
         infile >> temp;
     }
     
-
+    //closes file and ends main
     infile.close();
     return 0;
 }
 
-//
+//Prints stars for the temp, each star represnets a range of three degrees
 void findTempRange(int temp)
 {
     int stars = 0;
@@ -72,10 +76,11 @@ void findTempRange(int temp)
             }
             std::cout << "\n";
         }
-
+        //if the temp is negative
         else if (temp / 3.0 < 0)
         {
             stars = (temp / -3.0) + 0.5;
+            //takes whitespace and accounts for how many stars there will be to print the right space
             std::cout << std::setw(13 - (temp / -3.0));
             while (stars > count)
             {
